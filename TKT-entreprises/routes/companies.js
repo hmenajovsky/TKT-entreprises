@@ -23,3 +23,37 @@ router.post("/add", (req,res,next) => {
 		})
 		.catch(next);
 });
+
+// delete a company 
+router.get("/:id/delete", deleteCompany);
+
+const deleteCompany = async (req, res) => {
+	const id = req.params.id;
+	try {
+		const deleted = await Companies.findByIdAndDelete(id);
+		console.log("deleted companies: ", deleted);
+		res.redirect("/companies");
+	} catch (error) {
+		console.error(error);
+	}
+};
+
+
+
+//filter a company by its name
+router.get("/filter", filterACompany);
+
+const filterACompany = async (req, res) => {
+  try {
+	const filteredCompany = await Companies.find({ name: req.query.q });
+  res.json(filteredCompany);
+  } catch(error) {
+    console.log(error);
+  }
+};
+
+
+
+
+// sort a company 
+
