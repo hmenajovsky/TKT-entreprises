@@ -24,8 +24,7 @@ router.post("/add", (req,res,next) => {
 		.catch(next);
 });
 
-// delete a company 
-router.get("/:id/delete", deleteCompany);
+
 
 const deleteCompany = async (req, res) => {
 	const id = req.params.id;
@@ -38,10 +37,11 @@ const deleteCompany = async (req, res) => {
 	}
 };
 
+// delete a company 
+router.get("/:id/delete", deleteCompany);
 
 
-//filter a company by its name
-router.get("/filter", filterACompany);
+
 
 const filterACompany = async (req, res) => {
   try {
@@ -53,6 +53,8 @@ const filterACompany = async (req, res) => {
 };
 
 
+//filter a company by its name
+router.get("/filter", filterACompany);
 
 
 // sort a company 
