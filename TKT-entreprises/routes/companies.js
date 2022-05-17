@@ -45,7 +45,8 @@ router.get("/:id/delete", deleteCompany);
 
 const filterACompany = async (req, res) => {
   try {
-	const filteredCompany = await Companies.find({ name: req.query.q });
+  const filteredCompany = await Companies.find({ sector: req.query.q });
+  console.log(filteredCompany);
   res.json(filteredCompany);
   } catch(error) {
     console.log(error);
@@ -53,7 +54,7 @@ const filterACompany = async (req, res) => {
 };
 
 
-//filter a company by its name
+//filter a company by its sector
 router.get("/filter", filterACompany);
 
 
