@@ -12,3 +12,14 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+
+/* add a company item */
+router.post("/add", (req,res,next) => {
+  Companies.create(req.body)
+		.then((newCompany) => {
+      console.log("a new company added", newCompany)
+			res.redirect("/companies");
+		})
+		.catch(next);
+});
